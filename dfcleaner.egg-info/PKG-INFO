@@ -1,0 +1,24 @@
+Metadata-Version: 2.4
+Name: dfcleaner
+Version: 0.1.0
+Summary: Automating DF and CSV Data Cleaning
+Home-page:  
+Author: Brandyn Hamilton
+Author-email: brandynham1120@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: pandas
+Requires-Dist: numpy
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
