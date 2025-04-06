@@ -88,25 +88,24 @@ class DFCleaner:
         return df, time_freq
 
     def clean_dates(self, df, time_freq):
-        """Remove current incomplete periods based on frequency."""
+        """Remove current incomplete periods based on inferred frequency."""
         df = df.copy()
 
-        today = pd.Timestamp.now(tz=df.index.tz) if df.index.tz else pd.to_datetime(dt.date.today())
+        # Ensure index is datetime and normalized
+        df.index = pd.to_datetime(df.index).normalize()
+        now = pd.Timestamp.now(tz=df.index.tz).normalize() if df.index.tz else pd.Timestamp.now().normalize()
 
-        if time_freq == 'W':
-            start_of_week = today - pd.to_timedelta(today.weekday(), unit='d')
-            df = df[df.index < start_of_week]
-        elif time_freq == 'M':
-            start_of_month = today.replace(day=1)
-            df = df[df.index < start_of_month]
-        elif time_freq == 'Q':
-            current_quarter = (today.month - 1) // 3 + 1
-            quarter_start = pd.Timestamp(dt.date(today.year, (current_quarter - 1) * 3 + 1, 1))
-            if df.index.tz:
-                quarter_start = quarter_start.tz_localize(df.index.tz)
-            df = df[df.index < quarter_start]
-        else:
-            df = df[df.index < today]
+        try:
+            offset = pd.tseries.frequencies.to_offset(time_freq)
+        except Exception as e:
+            print(f"[Warning] Invalid frequency '{time_freq}': {e}. Defaulting to 'D'.")
+            offset = pd.tseries.frequencies.to_offset("D")
+
+        # Get the start of the current period
+        current_period_start = offset.rollback(now).normalize()
+
+        # Keep only rows before current (incomplete) period
+        df = df[df.index < current_period_start]
 
         return df.sort_index()
 
