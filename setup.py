@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="dfcleaner",  # Name of your package
-    version="0.1.0",  # Initial version
+    version="0.1.2",  # Initial version
     packages=find_packages(),
     install_requires=[
         "pandas",
