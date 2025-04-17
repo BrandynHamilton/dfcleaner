@@ -2,3 +2,5 @@
 /dfcleaner_env
 *.egg-info/
 pyproject.toml
+build
+dist
