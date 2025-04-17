@@ -1,4 +1,4 @@
-# 🧹 `dfcleaner` Documentation
+# `dfcleaner` Documentation
 
 dfcleaner is a lightweight Python utility for cleaning, parsing, and preparing time series and tabular datasets.
 It streamlines common DataFrame operations such as timezone normalization, date parsing, frequency inference, BOM removal, and value cleaning.
