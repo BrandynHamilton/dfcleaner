@@ -1,3 +1,4 @@
 /tests
 /dfcleaner_env
 *.egg-info/
+pyproject.toml
