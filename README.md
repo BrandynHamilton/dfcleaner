@@ -87,3 +87,9 @@ dfcleaner/
 ## License
 
 MIT License
+
+## Questions or Issues?
+If you encounter any problems, have feature requests, or want to contribute improvements, feel free to reach out.
+
+Maintainer: Brandyn Hamilton
+Email: [brandynham1120@gmail.com]
