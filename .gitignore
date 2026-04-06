@@ -1,3 +1,5 @@
 /tests
 /dfcleaner_env
 *.egg-info/
+*.venv/
+*.pyc

@@ -10,7 +10,7 @@ setup(
     ],
     author="Brandyn Hamilton",
     author_email="brandynham1120@gmail.com",
-    description="Automating DF and CSV Data Cleaning",
+    description="Automating DF Data Cleaning",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url=" ",  # optional
