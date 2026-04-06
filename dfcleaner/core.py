@@ -3,14 +3,21 @@ import numpy as np
 import json
 
 import datetime as dt
+import pytz
 import os
 
 class DFCleaner:
     def __init__(self, timezone=None):
         """
-        timezone: 'UTC', 'US/Eastern', etc.
-        If None, will remove timezone awareness.
+        timezone: A valid timezone string like 'UTC', 'US/Eastern', etc.
+        If None, any timezone awareness will be removed from the datetime index.
         """
+        if timezone is not None:
+            try:
+                # Validate using pytz to ensure compatibility
+                pytz.timezone(timezone)
+            except Exception:
+                raise ValueError(f"Invalid timezone string: '{timezone}'. Must be a valid IANA timezone.")
         self.timezone = timezone
 
     def apply_timezone(self, df):

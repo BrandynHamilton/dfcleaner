@@ -1,4 +1,4 @@
-# 🧹 `dfcleaner` Documentation
+# `dfcleaner` Documentation
 
 dfcleaner is a lightweight Python utility for cleaning, parsing, and preparing time series and tabular datasets.
 It streamlines common DataFrame operations such as timezone normalization, date parsing, frequency inference, BOM removal, and value cleaning.
@@ -12,7 +12,7 @@ pip install dfcleaner
 Or clone locally for development:
 
 ```bash
-git clone https://github.com/yourname/dfcleaner.git
+git clone https://github.com/BrandynHamilton/dfcleaner
 cd dfcleaner
 pip install -e .
 ```
@@ -20,7 +20,7 @@ pip install -e .
 ## Usage Example
 
 ```python
-from dfcleaner.core import DFCleaner
+from dfcleaner import DFCleaner
 
 cleaner = DFCleaner(timezone="UTC")
 df = cleaner.to_df("my_data.csv")
@@ -30,6 +30,10 @@ df = cleaner.clean_dates(df, time_freq=freq)
 ```
 
 ## Core Methods
+
+### `__init(timezone=None)`
+
+Accepts a string like 'UTC', 'US/Eastern', or any other valid IANA timezone string.  If None, it removes timezone awareness from datetime index.
 
 ### `to_df(file, delimiter=',')`
 
@@ -50,6 +54,7 @@ Scans DataFrame for common time-related column names. You can optionally pass a 
 
 - Converts a detected or specified datetime column to the index.
 - Infers the frequency of the datetime index.
+- Returns the DataFrame with datetime index as well as the estimated frequency ('D','M','Q')
 
 ### `clean_dates(df, time_freq)`
 
@@ -82,3 +87,8 @@ dfcleaner/
 ## License
 
 MIT License
+
+## Questions or Issues?
+If you encounter any problems, have feature requests, or want to contribute improvements, feel free to reach out.
+
+Email: [brandynham1120@gmail.com]
